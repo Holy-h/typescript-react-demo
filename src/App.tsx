@@ -1,7 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 
-const App: React.FC = () => {
-  return <div className="App">Hello</div>;
-};
+interface IState {
+  counter: number;
+}
+class App extends Component<{}, IState> {
+  state = {
+    counter: 0
+  };
+  render() {
+    const { counter } = this.state;
+    return (
+      <>
+        <div>{counter}</div>
+        <button onClick={this.add}>Add</button>
+      </>
+    );
+  }
+  add = (): void => {
+    this.setState(prevState => {
+      return {
+        counter: prevState.counter + 1
+      };
+    });
+  };
+}
 
 export default App;
