@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.span``;
+const Container = styled.span<{ isBlue: boolean }>`
+  color: ${props => (props.isBlue ? "blue" : "black")};
+`;
 
 interface IProps {
   count: number;
@@ -10,7 +12,7 @@ interface IProps {
 const Number: React.FC<IProps> = ({ count }) => {
   return (
     <>
-      <Container>{count}</Container>
+      <Container isBlue={count > 10}>{count}</Container>
     </>
   );
 };
